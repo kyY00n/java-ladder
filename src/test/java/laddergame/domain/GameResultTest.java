@@ -29,7 +29,7 @@ class GameResultTest {
         GameResult gameResult = new GameResult(
                 Map.of(personalName1, ladderResultItem1, personalName2, ladderResultItem2));
         //when
-        LadderResultItem searchResult = gameResult.searchBy("hi");
+        LadderResultItem searchResult = gameResult.getLadderResultItem("hi");
         //then
         assertThat(searchResult).isEqualTo(ladderResultItem1);
     }
@@ -41,7 +41,7 @@ class GameResultTest {
         GameResult gameResult = new GameResult(Map.of());
         //when
         //then
-        Assertions.assertThatThrownBy(() -> gameResult.searchBy("no"))
+        Assertions.assertThatThrownBy(() -> gameResult.getLadderResultItem("no"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

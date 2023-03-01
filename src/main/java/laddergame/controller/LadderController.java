@@ -103,7 +103,7 @@ public class LadderController {
 
     private void printSearchResult(GameResult gameResult, String name) {
         try {
-            LadderResultItem searchResult = gameResult.searchBy(name);
+            LadderResultItem searchResult = gameResult.getLadderResultItem(name);
             outputView.printResult(searchResult);
         } catch (IllegalArgumentException e) {
             OutputView.printExceptionMessage(e.getMessage());

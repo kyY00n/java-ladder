@@ -13,7 +13,7 @@ public class GameResult {
         this.nameToItem = nameToItem;
     }
 
-    public LadderResultItem searchBy(String value) {
+    public LadderResultItem getLadderResultItem(String value) {
         PersonalName keyName = PersonalName.newInstance(value);
         if (!nameToItem.containsKey(keyName)) {
             throw new IllegalArgumentException("게임 참여자의 이름이 아닙니다.");
