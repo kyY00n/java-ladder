@@ -40,8 +40,6 @@ public class LadderController {
         final Height ladderHeight = createHeight();
 
         final Ladder ladder = makeLadder(ladderWidth, ladderHeight);
-
-        printLadder(names, ladderResult, ladder);
         playGame(names, ladderResult, ladder);
     }
 
@@ -52,6 +50,7 @@ public class LadderController {
     }
 
     private void playGame(PersonalNames names, LadderResult ladderResult, Ladder ladder) {
+        printLadder(names, ladderResult, ladder);
         final LadderGame ladderGame = new LadderGame(names, ladderResult);
         final GameResult result = ladderGame.moveAndGetResult(ladder);
         printSearchedResultFrom(result, RETRY_LIMIT);
