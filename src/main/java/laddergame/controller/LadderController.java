@@ -3,6 +3,7 @@ package laddergame.controller;
 import java.util.List;
 import java.util.function.Supplier;
 import laddergame.domain.LadderResult;
+import laddergame.domain.LadderResultItem;
 import laddergame.domain.PersonalNames;
 import laddergame.domain.game.GameResult;
 import laddergame.domain.game.LadderGame;
@@ -91,7 +92,7 @@ public class LadderController {
                 outputView.printTotalResult(gameResult);
                 return;
             }
-            outputView.printResult(gameResult.searchBy(name));
+            printSearchResult(gameResult, command);
         }
         throw new IllegalStateException("재시도 횟수를 넘었습니다.");
     }
@@ -99,4 +100,14 @@ public class LadderController {
     private boolean isEnd(String name) {
         return name.equals("all");
     }
+
+    private void printSearchResult(GameResult gameResult, String name) {
+        try {
+            LadderResultItem searchResult = gameResult.searchBy(name);
+            outputView.printResult(searchResult);
+        } catch (IllegalArgumentException e) {
+            OutputView.printExceptionMessage(e.getMessage());
+        }
+    }
+
 }
