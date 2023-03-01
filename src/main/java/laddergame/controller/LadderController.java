@@ -86,8 +86,8 @@ public class LadderController {
 
     private void printSearchedResultFrom(GameResult gameResult, int tryCount) {
         while (tryCount-- > 0) {
-            String name = inputView.readNameToCheckResult();
-            if (isAll(name)) {
+            String command = inputView.readSearchCommand();
+            if (isEnd(command)) {
                 outputView.printTotalResult(gameResult);
                 return;
             }
@@ -96,7 +96,7 @@ public class LadderController {
         throw new IllegalStateException("재시도 횟수를 넘었습니다.");
     }
 
-    private static boolean isAll(String name) {
+    private boolean isEnd(String name) {
         return name.equals("all");
     }
 }
