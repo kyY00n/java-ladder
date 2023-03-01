@@ -24,19 +24,22 @@ class PlayerTest {
     @ParameterizedTest
     @ValueSource(ints = {0, 3, 2, 4, 5, 11})
     void getPosition(int value) {
+        //given
         Player player = new Player(PersonalName.newInstance("name"), value);
         Position position = player.getPosition();
-
+        //when
+        //then
         assertThat(position.getValue()).isEqualTo(value);
     }
 
     @DisplayName("오른쪽으로 움직일 수 있다.")
     @Test
     void moveRight() {
+        //given
         Player player = new Player(PersonalName.newInstance("hihi"), 0);
-
+        //when
         player.moveRight();
-
+        //then
         Position position = player.getPosition();
         assertThat(position.getValue()).isEqualTo(1);
     }
@@ -44,10 +47,11 @@ class PlayerTest {
     @DisplayName("왼쪽으로 움질일 수 있다.")
     @Test
     void moveLeft() {
+        //given
         Player player = new Player(PersonalName.newInstance("hihi"), 2);
-
+        //when
         player.moveLeft();
-
+        //then
         Position position = player.getPosition();
         assertThat(position.getValue()).isEqualTo(1);
     }
@@ -55,7 +59,10 @@ class PlayerTest {
     @DisplayName("이미 맨 왼쪽인데 왼쪽으로 움직이려 하면 예외를 던진다.")
     @Test
     void throwExceptionAlreadyStartOfTheLine() {
+        //given
         Player player = new Player(PersonalName.newInstance("hihi"), 0);
+        //when
+        //then
         assertThatThrownBy(() -> player.moveLeft())
                 .isInstanceOf(IllegalArgumentException.class);
     }
