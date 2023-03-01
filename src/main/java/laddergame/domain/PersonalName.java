@@ -7,7 +7,7 @@ public class PersonalName {
     private static final Pattern NAME_REGEX = Pattern.compile("([a-z]|[A-Z])+");
     private final String value;
 
-    public static PersonalName valueOf(final String value) {
+    public static PersonalName newInstance(final String value) {
         return new PersonalName(value);
     }
 

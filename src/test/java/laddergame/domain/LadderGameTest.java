@@ -55,7 +55,7 @@ class LadderGameTest {
         //when
         Map<PersonalName, LadderResultItem> gameResult = ladderGame.moveAndGetResult(ladder).getNameToItem();
         //then
-        assertThat(gameResult.keySet()).contains(PersonalName.valueOf("rosie"), PersonalName.valueOf("kiara"));
+        assertThat(gameResult.keySet()).contains(PersonalName.newInstance("rosie"), PersonalName.newInstance("kiara"));
     }
 
     @DisplayName("매칭된 결과가 일치해야한다.")
@@ -72,7 +72,7 @@ class LadderGameTest {
         //when
         Map<PersonalName, LadderResultItem> matchedResult = ladderGame.moveAndGetResult(ladder).getNameToItem();
         //then
-        assertThat(matchedResult.get(PersonalName.valueOf("rosie")).getName()).isEqualTo("result2");
-        assertThat(matchedResult.get(PersonalName.valueOf("kiara")).getName()).isEqualTo("result1");
+        assertThat(matchedResult.get(PersonalName.newInstance("rosie")).getName()).isEqualTo("result2");
+        assertThat(matchedResult.get(PersonalName.newInstance("kiara")).getName()).isEqualTo("result1");
     }
 }

@@ -19,7 +19,7 @@ class PersonalNameTest {
 
         //when
         //then
-        assertThatThrownBy(() -> PersonalName.valueOf(valueEmpty))
+        assertThatThrownBy(() -> PersonalName.newInstance(valueEmpty))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -31,7 +31,7 @@ class PersonalNameTest {
 
         //when
         //then
-        assertThatThrownBy(() -> PersonalName.valueOf(valueBlank))
+        assertThatThrownBy(() -> PersonalName.newInstance(valueBlank))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -43,7 +43,7 @@ class PersonalNameTest {
 
         //when
         //then
-        assertThatThrownBy(() -> PersonalName.valueOf(valueBlank))
+        assertThatThrownBy(() -> PersonalName.newInstance(valueBlank))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -55,7 +55,7 @@ class PersonalNameTest {
 
         //when
         //then
-        assertThatThrownBy(() -> PersonalName.valueOf(nullValue))
+        assertThatThrownBy(() -> PersonalName.newInstance(nullValue))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -67,7 +67,7 @@ class PersonalNameTest {
 
         //when
         //then
-        assertDoesNotThrow(() -> PersonalName.valueOf(value));
+        assertDoesNotThrow(() -> PersonalName.newInstance(value));
     }
 
     @DisplayName("값을 가져온다.")
@@ -85,9 +85,9 @@ class PersonalNameTest {
     @Test
     void equalsWhenValuesAreSame() {
         //given
-        final PersonalName personalName = PersonalName.valueOf("hihi");
+        final PersonalName personalName = PersonalName.newInstance("hihi");
         //when
         //then
-        assertThat(personalName).isEqualTo(PersonalName.valueOf("hihi"));
+        assertThat(personalName).isEqualTo(PersonalName.newInstance("hihi"));
     }
 }

@@ -10,7 +10,8 @@ public class PersonalNames {
 
     public PersonalNames(final List<String> personalNames) {
         validate(personalNames);
-        this.personalNames = personalNames.stream().map(PersonalName::valueOf).collect(Collectors.toUnmodifiableList());
+        this.personalNames = personalNames.stream().map(PersonalName::newInstance)
+                .collect(Collectors.toUnmodifiableList());
     }
 
     private void validate(List<String> personalNames) {

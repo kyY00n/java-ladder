@@ -13,7 +13,7 @@ class GameResultTest {
     @DisplayName("생성된다.")
     @Test
     void create() {
-        PersonalName personalName = PersonalName.valueOf("name");
+        PersonalName personalName = PersonalName.newInstance("name");
         LadderResultItem ladderResultItem = new LadderResultItem("item");
         assertDoesNotThrow(() -> new GameResult(Map.of(personalName, ladderResultItem)));
     }
@@ -22,9 +22,9 @@ class GameResultTest {
     @Test
     void queryByName() {
         //given
-        PersonalName personalName1 = PersonalName.valueOf("hi");
+        PersonalName personalName1 = PersonalName.newInstance("hi");
         LadderResultItem ladderResultItem1 = new LadderResultItem("item1");
-        PersonalName personalName2 = PersonalName.valueOf("bye");
+        PersonalName personalName2 = PersonalName.newInstance("bye");
         LadderResultItem ladderResultItem2 = new LadderResultItem("item2");
         GameResult gameResult = new GameResult(
                 Map.of(personalName1, ladderResultItem1, personalName2, ladderResultItem2));
@@ -50,11 +50,11 @@ class GameResultTest {
     void getNameToItem() {
         //given
         GameResult gameResult = new GameResult(
-                Map.of(PersonalName.valueOf("first"), new LadderResultItem("item1"),
-                        PersonalName.valueOf("second"), new LadderResultItem("item2"))
+                Map.of(PersonalName.newInstance("first"), new LadderResultItem("item1"),
+                        PersonalName.newInstance("second"), new LadderResultItem("item2"))
         );
 
         Map<PersonalName, LadderResultItem> nameToItem = gameResult.getNameToItem();
-        assertThat(nameToItem.keySet()).contains(PersonalName.valueOf("first"), PersonalName.valueOf("second"));
+        assertThat(nameToItem.keySet()).contains(PersonalName.newInstance("first"), PersonalName.newInstance("second"));
     }
 }
